@@ -43,7 +43,7 @@ get_reqx(State) ->
 	case proplists:get_value(xreq, Args) of
 		undefined -> 
             io:format("xreq not defined undef~n", []),
-            format_error("xreq not sepcified! DO SOMETHING");
+            error:{?MODULE, "xreq not sepcified! DO SOMETHING"};
         X -> 
             io:format("xref ~p~n", [X]),
             ok
