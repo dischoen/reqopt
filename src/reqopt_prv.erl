@@ -29,8 +29,7 @@ init(State) ->
 
 -spec do(rebar_state:t()) -> {ok, rebar_state:t()} | {error, string()}.
 do(State) ->
-	get_reqx(State),
-    {ok, State}.
+	get_reqx(State)
 
 -spec format_error(any()) ->  iolist().
 format_error(Reason) ->
@@ -42,9 +41,9 @@ get_reqx(State) ->
     io:format("ARGS ~p~n", [Args]),
 	case proplists:get_value(xreq, Args) of
 		undefined -> 
-            io:format("xreq not defined undef~n", []),
-            error({?MODULE, "xreq not sepcified! DO SOMETHING"});
+            io_lib:format("xreq not defined undef~n", []),
+            {error, State};
         X -> 
             io:format("xref ~p~n", [X]),
-            ok
+            {ok, State}
         end.
