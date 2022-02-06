@@ -1,4 +1,5 @@
 -module(reqopt_prv).
+-behaviour(provider).
 
 -export([init/1, do/1, format_error/1]).
 
@@ -16,8 +17,10 @@ init(State) ->
             {bare, true},                 % The task can be run by the user, always true
             {deps, ?DEPS},                % The list of dependencies
             {example, "rebar3 reqopt -x str"}, % How to use the plugin
-	    % list of options understood by the plugin
-            {opts, [xreq, $x, "xreq", undefined, "required optional parameter"]},
+                                                % list of options understood by the plugin
+            {opts, [
+                    {xreq, $x, "xreq", undefined, "required optional parameter"}
+                   ]},
             {short_desc, "required optionals"},
             {desc, "required optionals"}
     ]),
