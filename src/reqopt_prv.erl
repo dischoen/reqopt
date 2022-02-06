@@ -41,9 +41,9 @@ get_reqx(State) ->
 	{Args, _} = rebar_state:command_parsed_args(State),
     io:format("ARGS ~p~n", [Args]),
 	case proplists:get_value(xreq, Args) of
-		undef -> 
-            io:format("xreq undef~n", []),
-            format_error("xreq not sepcified!");
+		undefined -> 
+            io:format("xreq not defined undef~n", []),
+            format_error("xreq not sepcified! DO SOMETHING");
         X -> 
             io:format("xref ~p~n", [X]),
             ok
